@@ -1,0 +1,9 @@
+.git
+.gitignore
+.cursor
+*.md
+PART-*.md
+PLAN.md
+Dockerfile
+.dockerignore
+cloudbuild.yaml
