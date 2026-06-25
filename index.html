@@ -53,9 +53,7 @@
               </figure>
               <figure class="brand-story__slide brand-story__slide--video">
                 <button type="button" class="brand-story__video-trigger" data-video-src="assets/food/food-1.mp4" aria-label="Play food video 1">
-                  <video class="brand-story__video-thumb" muted playsinline preload="metadata">
-                    <source src="assets/food/food-1.mp4" type="video/mp4">
-                  </video>
+                  <video class="brand-story__video-poster video-poster" src="assets/food/food-1.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
                   <span class="brand-story__play" aria-hidden="true">
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.45)" />
@@ -66,9 +64,7 @@
               </figure>
               <figure class="brand-story__slide brand-story__slide--video">
                 <button type="button" class="brand-story__video-trigger" data-video-src="assets/food/food-2.mp4" aria-label="Play food video 2">
-                  <video class="brand-story__video-thumb" muted playsinline preload="metadata">
-                    <source src="assets/food/food-2.mp4" type="video/mp4">
-                  </video>
+                  <video class="brand-story__video-poster video-poster" src="assets/food/food-2.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
                   <span class="brand-story__play" aria-hidden="true">
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.45)" />
@@ -79,9 +75,7 @@
               </figure>
               <figure class="brand-story__slide brand-story__slide--video">
                 <button type="button" class="brand-story__video-trigger" data-video-src="assets/food/food-3.mp4" aria-label="Play food video 3">
-                  <video class="brand-story__video-thumb" muted playsinline preload="metadata">
-                    <source src="assets/food/food-3.mp4" type="video/mp4">
-                  </video>
+                  <video class="brand-story__video-poster video-poster" src="assets/food/food-3.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
                   <span class="brand-story__play" aria-hidden="true">
                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.45)" />
@@ -104,7 +98,15 @@
     <section class="our-star" aria-labelledby="our-star-heading">
       <div class="container our-star__layout">
         <figure class="our-star__photo">
-          <img src="assets/Newimages/rate/604453350_1447398103669778_1594815335161642805_n.jpg" alt="Guests and team at Saigon District Kitchen and Bar">
+          <button type="button" class="our-star__video-trigger" data-video-src="assets/rate/rate.mp4" aria-label="Play guests and team video">
+            <img class="our-star__video-poster video-poster" src="assets/rate/rate-poster.jpg" alt="Guests and team at Saigon District Kitchen and Bar">
+            <span class="our-star__play" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.45)" />
+                <path d="M26 20 L46 32 L26 44 Z" fill="#ffffff" />
+              </svg>
+            </span>
+          </button>
         </figure>
         <div class="our-star__panel">
           <p class="our-star__label">Our Star</p>
@@ -215,7 +217,7 @@
             </div>
           </figure>
           <button type="button" class="social-follow__card social-follow__card--center social-follow__video-trigger" data-video-src="video/video.mp4" aria-label="Play Saturday Music Night video">
-            <img src="assets/Newimages/social/502581733_1283417916734465_4421418351247828472_n.jpg" alt="Saturday Music Night at Saigon District Kitchen and Bar">
+            <img class="video-poster" src="assets/Newimages/social/502581733_1283417916734465_4421418351247828472_n.jpg" alt="Saturday Music Night at Saigon District Kitchen and Bar">
             <span class="social-follow__play" aria-hidden="true">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(0, 0, 0, 0.45)" />
@@ -252,7 +254,7 @@
       <button type="button" class="video-modal__backdrop" aria-label="Close video"></button>
       <div class="video-modal__dialog">
         <button type="button" class="video-modal__close" aria-label="Close video">&times;</button>
-        <video class="video-modal__player" controls preload="metadata" playsinline></video>
+        <video class="video-modal__player" controls preload="auto" playsinline></video>
       </div>
     </div>
   </main>

@@ -224,20 +224,23 @@
   inset: 0;
   margin: 0;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.5s ease;
 }
 
 .brand-story__slide.is-active {
   opacity: 1;
   z-index: 1;
+  pointer-events: auto;
 }
 
 .brand-story__slide img,
-.brand-story__video-thumb {
+.brand-story__video-poster {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
 .brand-story__video-trigger {
@@ -360,7 +363,8 @@
   margin-right: -48px;
 }
 
-.our-star__photo img {
+.our-star__photo img,
+.our-star__video-poster {
   display: block;
   width: 100%;
   max-width: 520px;
@@ -368,6 +372,47 @@
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 16px 48px rgba(40, 30, 15, 0.25);
+  pointer-events: none;
+}
+
+.our-star__video-trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+.our-star__video-trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.our-star__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.our-star__play svg {
+  width: clamp(48px, 10vw, 72px);
+  height: clamp(48px, 10vw, 72px);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-fast);
+}
+
+.our-star__video-trigger:hover .our-star__play svg,
+.our-star__video-trigger:focus-visible .our-star__play svg {
+  transform: scale(1.08);
 }
 
 .our-star__panel {
@@ -1109,7 +1154,8 @@ body.video-modal-open {
     margin-right: 0;
   }
 
-  .our-star__photo img {
+  .our-star__photo img,
+  .our-star__video-poster {
     max-width: none;
   }
 

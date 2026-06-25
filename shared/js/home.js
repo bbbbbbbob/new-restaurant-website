@@ -101,6 +101,104 @@
     setInterval(next, REVIEWS_AUTO_MS);
   }
 
+  function getPosterFromTrigger(trigger) {
+    var posterEl = trigger.querySelector(".video-poster");
+    if (posterEl && posterEl.tagName === "IMG" && posterEl.getAttribute("src")) {
+      return posterEl.src;
+    }
+
+    return "";
+  }
+
+  function initVideoPosters() {
+    document.querySelectorAll(".video-poster").forEach(function (poster) {
+      if (poster.tagName === "IMG") {
+        if (poster.getAttribute("src")) {
+          return;
+        }
+
+        var trigger = poster.closest("[data-video-src]");
+        if (!trigger) {
+          return;
+        }
+
+        var posterSrc = trigger.getAttribute("data-poster-src") || poster.getAttribute("data-poster-src");
+        if (posterSrc) {
+          poster.src = posterSrc;
+          return;
+        }
+
+        var videoSrc = trigger.getAttribute("data-video-src");
+        if (!videoSrc) {
+          return;
+        }
+
+        var video = document.createElement("video");
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = "auto";
+        video.src = videoSrc;
+
+        function captureFrame() {
+          if (!video.videoWidth || !video.videoHeight) {
+            return;
+          }
+
+          var canvas = document.createElement("canvas");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+          poster.src = canvas.toDataURL("image/jpeg", 0.85);
+        }
+
+        video.addEventListener("loadeddata", function () {
+          if (video.duration && !isNaN(video.duration) && video.duration > 0.15) {
+            video.currentTime = 0.1;
+          } else {
+            captureFrame();
+          }
+        });
+
+        video.addEventListener("seeked", captureFrame);
+        return;
+      }
+
+      if (poster.tagName !== "VIDEO") {
+        return;
+      }
+
+      poster.muted = true;
+      poster.playsInline = true;
+      poster.preload = "metadata";
+      poster.controls = false;
+      poster.loop = false;
+
+      if (!poster.getAttribute("src")) {
+        var videoTrigger = poster.closest("[data-video-src]");
+        if (videoTrigger) {
+          poster.src = videoTrigger.getAttribute("data-video-src");
+        }
+      }
+
+      function showFirstFrame() {
+        if (poster.readyState < 1) {
+          return;
+        }
+        if (poster.duration && !isNaN(poster.duration) && poster.duration > 0.15) {
+          poster.currentTime = 0.1;
+        } else {
+          poster.pause();
+        }
+      }
+
+      poster.addEventListener("loadedmetadata", showFirstFrame);
+      poster.addEventListener("loadeddata", showFirstFrame);
+      poster.addEventListener("seeked", function () {
+        poster.pause();
+      });
+    });
+  }
+
   function initVideoModal() {
     var modal = document.getElementById("video-modal");
     if (!modal) {
@@ -112,16 +210,37 @@
     var backdrop = modal.querySelector(".video-modal__backdrop");
     var triggers = document.querySelectorAll("[data-video-src]");
 
-    function openModal(src) {
+    function openModal(src, poster) {
       if (!video || !src) {
         return;
       }
-      video.src = src;
-      video.load();
+
+      if (poster) {
+        video.poster = poster;
+      } else {
+        video.removeAttribute("poster");
+      }
+
       modal.hidden = false;
       document.body.classList.add("video-modal-open");
-      video.currentTime = 0;
-      video.play();
+      video.controls = true;
+
+      document.querySelectorAll("video.video-poster").forEach(function (thumb) {
+        thumb.pause();
+      });
+
+      video.src = src;
+
+      // Try play immediately while the click gesture is still active.
+      var playPromise = video.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {
+          video.addEventListener("canplay", function handleCanPlay() {
+            video.removeEventListener("canplay", handleCanPlay);
+            video.play();
+          });
+        });
+      }
     }
 
     function closeModal() {
@@ -129,6 +248,7 @@
       document.body.classList.remove("video-modal-open");
       if (video) {
         video.pause();
+        video.removeAttribute("poster");
         video.removeAttribute("src");
         video.load();
       }
@@ -136,7 +256,7 @@
 
     triggers.forEach(function (trigger) {
       trigger.addEventListener("click", function () {
-        openModal(trigger.getAttribute("data-video-src"));
+        openModal(trigger.getAttribute("data-video-src"), getPosterFromTrigger(trigger));
       });
     });
 
@@ -158,6 +278,7 @@
   function initHome() {
     initStorySlider();
     initReviewsCarousel();
+    initVideoPosters();
     initVideoModal();
   }
 
