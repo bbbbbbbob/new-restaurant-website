@@ -9,6 +9,7 @@
     "https://www.facebook.com/saigondistrictkitchenandbar/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&_rdr";
 
   var NAV_LINKS = [
+    { label: "Home", key: "home" },
     { label: "Menu", key: "menu" },
     { label: "Location", key: "location" },
     { label: "Birthday Party", key: "birthday-party" },
