@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <rect width="640" height="400" fill="#1f1f1f"/>
+  <text x="320" y="190" fill="#c9a84c" font-family="Georgia, serif" font-size="32" text-anchor="middle">Banh Mi</text>
+  <text x="320" y="230" fill="#666" font-family="sans-serif" font-size="14" text-anchor="middle">Blog Thumbnail</text>
+</svg>

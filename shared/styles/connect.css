@@ -1,0 +1,315 @@
+/* Connect pages — Birthday Party, Contact, Jobs, Blog (light theme, matches Menu/Location) */
+
+.content-section {
+  padding: var(--section-padding-y-sm) 0 var(--section-padding-y);
+}
+
+.content-section--alt {
+  background-color: #ebe6df;
+}
+
+.content-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-dark);
+}
+
+.content-section__intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-lg);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.content-section__lead {
+  max-width: 720px;
+  margin: 0 auto var(--space-md);
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--color-text-dark);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  padding: var(--space-md);
+  background-color: #fff;
+  border: 1px solid var(--color-border-dark);
+}
+
+.card__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.card__price {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.gallery {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.gallery__item {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--color-border-dark);
+  background-color: #fff;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.form__row {
+  display: grid;
+  gap: var(--space-sm);
+  grid-template-columns: 1fr 1fr;
+}
+
+.form__group {
+  margin-bottom: var(--space-sm);
+}
+
+.form__group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.form__group input,
+.form__group textarea,
+.form__group select {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-dark);
+  background-color: #fff;
+  border: 1px solid var(--color-border-dark);
+}
+
+.form__group input:focus,
+.form__group textarea:focus,
+.form__group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.form__group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form__message {
+  padding: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+  display: none;
+}
+
+.form__message.is-visible {
+  display: block;
+}
+
+.form__message--success {
+  background-color: rgba(92, 158, 110, 0.12);
+  border: 1px solid #5c9e6e;
+  color: #3d7a52;
+}
+
+.form__message--error {
+  background-color: rgba(196, 92, 92, 0.12);
+  border: 1px solid #c45c5c;
+  color: #9e4040;
+}
+
+.form__actions {
+  text-align: center;
+  margin-top: var(--space-md);
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 14px 36px;
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-submit:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.jobs-contact {
+  max-width: 480px;
+  margin-inline: auto;
+  text-align: center;
+  padding: var(--space-lg);
+  background-color: #fff;
+  border: 1px solid var(--color-border-dark);
+}
+
+.jobs-contact__item {
+  margin-bottom: var(--space-sm);
+  font-size: 18px;
+}
+
+.jobs-contact__label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.blog-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.blog-card {
+  background-color: #fff;
+  border: 1px solid var(--color-border-dark);
+  transition: border-color var(--transition-fast);
+}
+
+.blog-card:hover {
+  border-color: var(--color-accent);
+}
+
+.blog-card__link {
+  display: block;
+  color: inherit;
+}
+
+.blog-card__image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--color-bg-light);
+}
+
+.blog-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-card__body {
+  padding: var(--space-md);
+}
+
+.blog-card__date {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.blog-card__title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-dark);
+}
+
+.blog-card__excerpt {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.post-header {
+  text-align: center;
+  padding: var(--section-padding-y-sm) var(--space-md);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+}
+
+.post-header__date {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.post-header__title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.post-body {
+  max-width: 720px;
+  margin-inline: auto;
+  padding: var(--section-padding-y-sm) var(--space-md) var(--section-padding-y);
+}
+
+.post-body p {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+}
+
+.post-body h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--color-text-dark);
+  margin-top: var(--space-md);
+}
+
+.related-posts {
+  padding: var(--section-padding-y-sm) 0 var(--section-padding-y);
+  background-color: #ebe6df;
+}
+
+.related-posts__title {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 768px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+}

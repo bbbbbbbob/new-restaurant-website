@@ -1,0 +1,31 @@
+/* Design tokens — shared across all pages */
+
+:root {
+  --color-bg-dark: #1c1c1c;
+  --color-bg-darker: #111111;
+  --color-bg-light: #f5f2ed;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.75);
+  --color-text-dark: #2a2a2a;
+  --color-text-muted: #666666;
+  --color-accent: #c4a35a;
+  --color-accent-hover: #d4b36a;
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-border-dark: rgba(0, 0, 0, 0.1);
+
+  --font-heading: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Lato", "Helvetica Neue", Arial, sans-serif;
+
+  --max-width: 1200px;
+  --section-padding-y: 100px;
+  --section-padding-y-sm: 60px;
+  --header-height: 80px;
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+
+  --transition-fast: 0.2s ease;
+}
