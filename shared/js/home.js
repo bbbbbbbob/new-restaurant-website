@@ -101,9 +101,64 @@
     setInterval(next, REVIEWS_AUTO_MS);
   }
 
+  function initVideoModal() {
+    var modal = document.getElementById("video-modal");
+    if (!modal) {
+      return;
+    }
+
+    var video = modal.querySelector(".video-modal__player");
+    var closeBtn = modal.querySelector(".video-modal__close");
+    var backdrop = modal.querySelector(".video-modal__backdrop");
+    var triggers = document.querySelectorAll("[data-video-src]");
+
+    function openModal(src) {
+      if (!video || !src) {
+        return;
+      }
+      video.src = src;
+      video.load();
+      modal.hidden = false;
+      document.body.classList.add("video-modal-open");
+      video.currentTime = 0;
+      video.play();
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove("video-modal-open");
+      if (video) {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+      }
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openModal(trigger.getAttribute("data-video-src"));
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener("click", closeModal);
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !modal.hidden) {
+        closeModal();
+      }
+    });
+  }
+
   function initHome() {
     initStorySlider();
     initReviewsCarousel();
+    initVideoModal();
   }
 
   if (document.readyState === "loading") {

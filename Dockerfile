@@ -12,6 +12,7 @@ COPY birthday-party /usr/share/nginx/html/birthday-party
 COPY contact-us /usr/share/nginx/html/contact-us
 COPY jobs /usr/share/nginx/html/jobs
 COPY assets /usr/share/nginx/html/assets
+COPY video /usr/share/nginx/html/video
 COPY shared /usr/share/nginx/html/shared
 
 EXPOSE 8080

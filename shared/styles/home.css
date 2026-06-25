@@ -232,11 +232,50 @@
   z-index: 1;
 }
 
-.brand-story__slide img {
+.brand-story__slide img,
+.brand-story__video-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.brand-story__video-trigger {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+.brand-story__video-trigger:focus-visible {
+  outline: 2px solid #7a3b2e;
+  outline-offset: 2px;
+}
+
+.brand-story__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.brand-story__play svg {
+  width: clamp(48px, 10vw, 72px);
+  height: clamp(48px, 10vw, 72px);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-fast);
+}
+
+.brand-story__video-trigger:hover .brand-story__play svg,
+.brand-story__video-trigger:focus-visible .brand-story__play svg {
+  transform: scale(1.08);
 }
 
 .brand-story__controls {
@@ -852,6 +891,44 @@
   z-index: 3;
 }
 
+.social-follow__video-trigger {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font: inherit;
+  color: inherit;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.social-follow__video-trigger:hover,
+.social-follow__video-trigger:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  outline: none;
+}
+
+.social-follow__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.social-follow__play svg {
+  width: clamp(48px, 8vw, 64px);
+  height: clamp(48px, 8vw, 64px);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-fast);
+}
+
+.social-follow__video-trigger:hover .social-follow__play svg,
+.social-follow__video-trigger:focus-visible .social-follow__play svg {
+  transform: scale(1.08);
+}
+
 .social-follow__card--right {
   transform: rotate(10deg) translateX(35%);
   z-index: 2;
@@ -938,6 +1015,72 @@
 .social-follow__btn--facebook:hover {
   background-color: #1466d8;
   color: #ffffff;
+}
+
+/* ── Social video modal ── */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 32px);
+}
+
+.video-modal[hidden] {
+  display: none;
+}
+
+body.video-modal-open {
+  overflow: hidden;
+}
+
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+.video-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: 90vh;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.video-modal__close:hover,
+.video-modal__close:focus-visible {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.video-modal__player {
+  display: block;
+  width: 100%;
+  max-height: 85vh;
+  border-radius: 12px;
+  background: #000000;
 }
 
 /* ── Responsive ── */
