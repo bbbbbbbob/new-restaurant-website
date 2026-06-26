@@ -101,15 +101,6 @@
     setInterval(next, REVIEWS_AUTO_MS);
   }
 
-  function getPosterFromTrigger(trigger) {
-    var posterEl = trigger.querySelector(".video-poster");
-    if (posterEl && posterEl.tagName === "IMG" && posterEl.getAttribute("src")) {
-      return posterEl.src;
-    }
-
-    return "";
-  }
-
   function initVideoModal() {
     var modal = document.getElementById("video-modal");
     if (!modal) {
@@ -121,20 +112,15 @@
     var backdrop = modal.querySelector(".video-modal__backdrop");
     var triggers = document.querySelectorAll("[data-video-src]");
 
-    function openModal(src, poster) {
+    function openModal(src) {
       if (!video || !src) {
         return;
-      }
-
-      if (poster) {
-        video.poster = poster;
-      } else {
-        video.removeAttribute("poster");
       }
 
       modal.hidden = false;
       document.body.classList.add("video-modal-open");
       video.controls = true;
+      video.removeAttribute("poster");
       video.src = src;
       video.play();
     }
@@ -152,7 +138,7 @@
 
     triggers.forEach(function (trigger) {
       trigger.addEventListener("click", function () {
-        openModal(trigger.getAttribute("data-video-src"), getPosterFromTrigger(trigger));
+        openModal(trigger.getAttribute("data-video-src"));
       });
     });
 
